@@ -5,6 +5,13 @@ import { render, cleanup } from '@testing-library/react';
 import '@testing-library/jest-dom/extend-expect';
 // imports the About component from the src/components/About/index.js file
 import About from '..';
+
+const categories = [
+    { name: 'portraits', description: 'Portraits of people in my life' }
+  ]
+const mockCurrentCategory = jest.fn();
+const mockSetCurrentCategory = jest.fn();
+
 // sets it to cleanup after each test
 afterEach(cleanup);
 
@@ -15,6 +22,11 @@ describe('About component', () => {
     it('renders', () => {
         // renders the About component
         render(<About />);
+        render(<Nav 
+        categories={categories}
+        setCurrentCategory={mockSetCurrentCategory}
+        currentCategory={mockCurrentCategory}
+        />);
     });
 
     // Second Test
