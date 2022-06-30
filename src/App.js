@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Nav from "./components/Nav";
 import About from "./components/About";
+import ContactForm from "./components/Contact";
 import Gallery from "./components/Gallery";
 
 function App() {
@@ -29,6 +30,7 @@ function App() {
         <div>
             <Nav categories={categories} setCurrentCategory={setCurrentCategory} currentCategory={currentCategory}></Nav>
             <main>
+                <ContactForm></ContactForm>
                 <Gallery currentCategory={currentCategory}></Gallery>
                 <About></About>
             </main>
