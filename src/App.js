@@ -5,6 +5,7 @@ import ContactForm from "./components/Contact";
 import Gallery from "./components/Gallery";
 
 function App() {
+    
     const [categories] = useState([
         {
             name: 'commercial',
@@ -25,14 +26,21 @@ function App() {
     ])
 
     const [currentCategory, setCurrentCategory] = useState(categories[0]);
+    // Hooks to make page page render correctly
+    const [contactSelected, setContactSelected] = useState(false);
 
     return (
         <div>
-            <Nav categories={categories} setCurrentCategory={setCurrentCategory} currentCategory={currentCategory}></Nav>
+            <Nav categories={categories} setCurrentCategory={setCurrentCategory} currentCategory={currentCategory} contactSelected={contactSelected} setContactSelected={setContactSelected} ></Nav>
             <main>
-                <ContactForm></ContactForm>
-                <Gallery currentCategory={currentCategory}></Gallery>
-                <About></About>
+                {!contactSelected ? (
+                     <> 
+                        <Gallery currentCategory={currentCategory}></Gallery>
+                        <About></About>
+                    </>
+                ) : (
+                    <ContactForm></ContactForm>
+                    )}
             </main>
         </div>
     );
